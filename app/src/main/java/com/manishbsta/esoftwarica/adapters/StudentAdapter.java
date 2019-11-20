@@ -47,6 +47,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
                 notifyItemRemoved(position);
             }
         });
+
+        if(student.getGender().equals("Male")){
+            holder.imgStudent.setImageResource(R.drawable.icon_male);
+        } else if(student.getGender().equals("Female")){
+            holder.imgStudent.setImageResource(R.drawable.icon_female);
+        }
     }
 
     @Override
