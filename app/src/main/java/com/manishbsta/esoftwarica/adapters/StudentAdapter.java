@@ -52,6 +52,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
             holder.imgStudent.setImageResource(R.drawable.icon_male);
         } else if(student.getGender().equals("Female")){
             holder.imgStudent.setImageResource(R.drawable.icon_female);
+        } else if(student.getGender().equals("Other")) {
+            holder.imgStudent.setImageResource(R.drawable.icon_other);
         }
     }
 
