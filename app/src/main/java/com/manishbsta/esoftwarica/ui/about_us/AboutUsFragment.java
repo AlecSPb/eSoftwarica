@@ -9,7 +9,6 @@ import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.manishbsta.esoftwarica.R;
 
@@ -23,11 +22,17 @@ public class AboutUsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_aboutus, container, false);
 
         webView = root.findViewById(R.id.webView);
-        webView.loadUrl("https://www.softwarica.edu.np/");
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webView.loadUrl("https://softwarica.edu.np/");
 
         return root;
     }
 }
+
+/*
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://softwarica.edu.np");
+ */

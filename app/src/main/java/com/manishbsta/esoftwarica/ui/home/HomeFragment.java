@@ -19,7 +19,6 @@ import com.manishbsta.esoftwarica.ui.add_student.AddStudentFragment;
 public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private ImageView imgDelete;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,16 +31,6 @@ public class HomeFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(root.getContext());
         recyclerView.setAdapter(studentAdapter);
         recyclerView.setLayoutManager(layoutManager);
-
-        imgDelete = root.findViewById(R.id.imgDelete);
-
-        imgDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
 
         return root;
     }

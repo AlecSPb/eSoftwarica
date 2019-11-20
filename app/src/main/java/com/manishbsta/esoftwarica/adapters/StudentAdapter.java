@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,12 +33,20 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull StudentViewHolder holder, final int position) {
         student = studentList.get(position);
         holder.txtName.setText(student.getFullname());
         holder.txtAge.setText(student.getAge());
         holder.txtAddress.setText(student.getAddress());
         holder.txtGender.setText(student.getGender());
+
+        holder.imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                studentList.remove(position);
+                notifyItemRemoved(position);
+            }
+        });
     }
 
     @Override
