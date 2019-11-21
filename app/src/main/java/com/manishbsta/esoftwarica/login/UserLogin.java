@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.manishbsta.esoftwarica.MainActivity;
 import com.manishbsta.esoftwarica.R;
@@ -36,6 +36,8 @@ public class UserLogin extends AppCompatActivity {
                 if(username.equals("admin") && password.equals("admin")){
                     Intent intent = new Intent(UserLogin.this, MainActivity.class);
                     startActivity(intent);
+                } else {
+                    Toast.makeText(UserLogin.this, "Username or Password Invalid!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -43,4 +45,6 @@ public class UserLogin extends AppCompatActivity {
 
 
     }
+
+
 }

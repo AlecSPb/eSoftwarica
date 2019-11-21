@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.manishbsta.esoftwarica.MainActivity;
 import com.manishbsta.esoftwarica.R;
 import com.manishbsta.esoftwarica.adapters.StudentAdapter;
 import com.manishbsta.esoftwarica.ui.add_student.AddStudentFragment;
@@ -27,7 +28,7 @@ public class HomeFragment extends Fragment {
 
         recyclerView = root.findViewById(R.id.rvStudentList);
 
-        StudentAdapter studentAdapter = new StudentAdapter(AddStudentFragment.studentList);
+        StudentAdapter studentAdapter = new StudentAdapter(AddStudentFragment.studentList, getContext());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(root.getContext());
         recyclerView.setAdapter(studentAdapter);
         recyclerView.setLayoutManager(layoutManager);

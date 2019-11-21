@@ -1,6 +1,7 @@
 package com.manishbsta.esoftwarica;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.manishbsta.esoftwarica.model.Student;
@@ -13,6 +14,14 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
+
+
     }
 
 }

@@ -1,12 +1,12 @@
 package com.manishbsta.esoftwarica.ui.add_student;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -25,7 +25,7 @@ public class AddStudentFragment extends Fragment {
     private Button btnSave;
     private EditText etName, etAddress, etAge;
     private RadioGroup rgGender;
-    String name, age, address, gender;
+    private String name, age, address, gender;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -61,12 +61,45 @@ public class AddStudentFragment extends Fragment {
                 age = etAge.getText().toString().trim();
                 address = etAddress.getText().toString().trim();
 
-                studentList.add(new Student(name, age, gender, address));
+                if(validation()) {
+                    studentList.add(new Student(name, age, gender, address));
+                    Toast.makeText(getContext(), "New Student Added!", Toast.LENGTH_SHORT).show();
+                }
 
-                Toast.makeText(getContext(), "New Student Added!", Toast.LENGTH_SHORT).show();
+                etName.setText("");
+                etAge.setText("");
+                etAddress.setText("");
+                rgGender.clearCheck();
             }
         });
 
         return root;
+    }
+
+    private boolean validation(){
+        if(TextUtils.isEmpty(name)){
+            etName.setError("Name can not be left empty!");
+            etName.requestFocus();
+            return false;
+        }
+
+        if(TextUtils.isEmpty(age)){
+            etAge.setError("Age can not be left empty!");
+            etAge.requestFocus();
+            return false;
+        }
+
+        if(TextUtils.isEmpty(gender)){
+            Toast.makeText(getContext(), "Please select your gender!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if(TextUtils.isEmpty(address)){
+            etAddress.setError("Address can not be left empty!");
+            etAddress.requestFocus();
+            return false;
+        }
+
+        return true;
     }
 }

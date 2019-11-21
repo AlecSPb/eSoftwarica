@@ -1,10 +1,12 @@
 package com.manishbsta.esoftwarica.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,10 +20,12 @@ import java.util.List;
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
 
     private List<Student> studentList;
-    Student student;
+    private Student student;
+    private Context context;
 
-    public StudentAdapter(List<Student> studentList) {
+    public StudentAdapter(List<Student> studentList, Context context) {
         this.studentList = studentList;
+        this.context = context;
     }
 
     @NonNull
@@ -33,7 +37,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final StudentViewHolder holder, final int position) {
         student = studentList.get(position);
         holder.txtName.setText(student.getFullname());
         holder.txtAge.setText(student.getAge());
@@ -55,6 +59,14 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         } else if(student.getGender().equals("Other")) {
             holder.imgStudent.setImageResource(R.drawable.icon_other);
         }
+
+        holder.imgStudent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Hello this is "+student.getFullname(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
